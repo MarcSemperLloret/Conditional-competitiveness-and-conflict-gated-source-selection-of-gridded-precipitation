@@ -28,6 +28,4 @@ The original AVAMET raw dataset and necessary pre-processed components are licen
 
 2. **Execution**: Scripts located in `src/` are typically run sequentially based on the desired target (table generation, metric derivation, or plotting). Please consult `protocol/support_utility_protocol_v1.md` for specific guidance on the exact pipelines.
 
-## License
 
-*(Add License Information here if applicable)*
