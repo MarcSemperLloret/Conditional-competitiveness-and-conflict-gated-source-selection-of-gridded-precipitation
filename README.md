@@ -1,4 +1,4 @@
-# Density Thresholds - Paper 11 Replication Repository
+# Density Thresholds -  Replication Repository
 
 This repository contains the necessary scripts and protocol documents to reproduce the experiments for **Paper 11**, targeted for *Remote Sensing Applications: Society and Environment*.
 
