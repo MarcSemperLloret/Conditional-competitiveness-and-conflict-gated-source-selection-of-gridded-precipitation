@@ -49,6 +49,8 @@ Running the regeneration script refreshes:
 - `results/figures_source/figure_s1_best_eo_by_regime.csv`
 - `results/manifests/frozen_inputs_manifest.csv`
 
+The canonical cell-hour benchmark table itself is not a public artefact in this repository. The public manifest and data dictionary are in `data/frozen/`.
+
 ## Repository Layout
 
 - `scripts/`: versioned analysis and regeneration scripts.

@@ -1,0 +1,18 @@
+artifact,column,description
+bootstrap_delta_mae_summary,slice_id,Evaluation slice identifier used in the manuscript-level delta-MAE bootstrap.
+bootstrap_delta_mae_summary,eo_baseline,Gridded precipitation product or source label.
+bootstrap_delta_mae_summary,comparator_kind,Local comparator type used for the EO-local contrast.
+bootstrap_delta_mae_summary,delta_mae_eo_minus_local,MAE difference in millimetres; positive values indicate gridded-product underperformance relative to the local comparator.
+bootstrap_delta_mae_summary,ci_low,Lower 2.5 percent bootstrap interval endpoint.
+bootstrap_delta_mae_summary,ci_high,Upper 97.5 percent bootstrap interval endpoint.
+main_delta_mae_table,slice_id,Global or positive-rain manuscript slice.
+conflict_delta_mae_table,slice_id,Conflict-regime manuscript slice.
+source_routing_summary,model,Fixed-source or conflict-gated deployment label.
+source_routing_summary,overall_mae_mm,Overall 2023 MAE in millimetres on the evaluated universe.
+source_routing_summary,positive_rain_mae_mm,Positive-rain MAE in millimetres on the evaluated universe.
+source_routing_summary,local_usage_share,Share of evaluated rows routed to the local branch.
+figure_source_tables,*,CSV columns mirror the plotting inputs used by the manuscript figure scripts.
+frozen_inputs_manifest,artifact,Public or restricted artefact name.
+frozen_inputs_manifest,public_path,Repository path for public artefacts; blank when the artefact is restricted.
+frozen_inputs_manifest,availability,Availability status and access condition.
+frozen_inputs_manifest,role,Role of the artefact in manuscript-level regeneration.
