@@ -1,31 +1,58 @@
-# Density Thresholds -  Replication Repository
+# A reproducible geospatial workflow for benchmarking gridded precipitation products against dense gauge networks
 
-This repository contains the necessary scripts and protocol documents to reproduce the experiments for **Paper 11**, targeted for *Remote Sensing Applications: Society and Environment*.
+This repository accompanies the manuscript:
 
-## Research Question
+"A reproducible geospatial workflow for benchmarking gridded precipitation products against dense gauge networks"
 
-This study investigates the conditions under which gridded Earth Observation (EO) precipitation products maintain operational utility compared to local gauge-assisted estimators, particularly when in-situ support is heterogeneous.
+The repository provides the scripts, configuration files, frozen manuscript-level outputs, figure-source tables, and selected derived benchmark artefacts needed to audit and regenerate the manuscript-level analyses.
 
-## Repository Structure
+## What Can Be Reproduced
 
-- `src/`: Python source code containing all the scripts to generate the tables, bootstrap analyses, metrics, and figure plotting packages.
-- `protocol/`: Experimental protocols detailing the primary metrics, ranking methodologies, regimes (intensity, conflict, support), and rules for comparison.
-- `data/`: Directory where the pre-processed input `.parquet` files should be placed (data not included, subject to AVAMET licensing).
-- `results/`: Directory created during execution to store outputs such as CSV tables, ranking documents, and plotted figures.
+The public frozen artefacts allow regeneration of manuscript-level tables, bootstrap summaries, and figure-source files under the common cell-hour benchmark design. The main public outputs are written to:
 
-## Data Access
+- `results/tables/`
+- `results/bootstrap/`
+- `results/figures_source/`
+- `results/manifests/`
 
-The original AVAMET raw dataset and necessary pre-processed components are licensed and not redistributed directly in this repository. Ensure that the required data subsets are correctly placed in the `data/` directory as specified in the protocol documents before running the scripts. Access to raw data may be granted by AVAMET upon reasonable request.
+## Restricted Inputs
 
-## Setup Instructions
+Full reconstruction from raw AVAMET holdings is not possible from public files because the upstream station archive is restricted. The canonical cell-hour benchmark table and AVAMET-derived local-baseline reconstruction layers are available from the corresponding author upon reasonable request, subject to source-data conditions.
 
-1. **Environment Setup**: Python 3.10+ is recommended. Create a virtual environment and install dependencies:
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows use: .venv\Scripts\Activate.ps1
-   pip install -r requirements.txt
-   ```
+Scripts that rebuild the upstream benchmark layer expect those restricted files under `data/restricted/`, or a custom path supplied with `BENCHMARK_RESTRICTED_DATA_DIR`.
 
-2. **Execution**: Scripts located in `src/` are typically run sequentially based on the desired target (table generation, metric derivation, or plotting). Please consult `protocol/support_utility_protocol_v1.md` for specific guidance on the exact pipelines.
+## Quick Start
 
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python scripts/regenerate_manuscript_outputs.py
+```
 
+On Windows PowerShell, activate the environment with:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+## Expected Outputs
+
+Running the regeneration script refreshes:
+
+- `results/tables/main_delta_mae_table.csv`
+- `results/tables/conflict_delta_mae_table.csv`
+- `results/tables/source_routing_summary.csv`
+- `results/bootstrap/bootstrap_delta_mae_summary.csv`
+- `results/figures_source/figure_2_global_positive_source.csv`
+- `results/figures_source/figure_3_conflict_source.csv`
+- `results/figures_source/figure_s1_best_eo_by_regime.csv`
+- `results/manifests/frozen_inputs_manifest.csv`
+
+## Repository Layout
+
+- `scripts/`: versioned analysis and regeneration scripts.
+- `results/`: frozen manuscript-level result tables, bootstrap summaries, figure-source tables, and manifests.
+- `data/`: public data notes and restricted-input placeholders.
+- `protocol/`: current benchmark and reproducibility protocols.
+- `archive/`: older protocol notes retained for provenance only.

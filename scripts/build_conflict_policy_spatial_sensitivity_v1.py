@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
@@ -17,8 +17,8 @@ import build_delta_mae_by_support_score_and_regime_v1 as base
 from build_temporal_sensitivity_2022_v1 import build_year_frame
 
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT_DIR = ROOT / "paper_11_density_thresholds" / "results" / "conflict_policy_spatial_sensitivity_v1"
+ROOT = Path(__file__).resolve().parents[1]
+OUT_DIR = ROOT / "results" / "conflict_policy_spatial_sensitivity_v1"
 FIG_DPI = 400
 
 BG = "#ffffff"
@@ -196,7 +196,7 @@ def plot_spatial_delta_maps(cell_df: pd.DataFrame) -> None:
         ax.spines["left"].set_color("#b7c1cb")
         ax.spines["bottom"].set_color("#b7c1cb")
         cbar = plt.colorbar(sc, ax=ax, fraction=0.046, pad=0.03)
-        cbar.set_label("Cell-level mean ΔMAE (mm)")
+        cbar.set_label("Cell-level mean Î”MAE (mm)")
 
     fig.suptitle("Spatial heterogeneity of source-selection gains in 2023", x=0.07, y=0.97, ha="left", fontsize=15, fontweight="bold")
     save_exports(fig, "figure_conflict_policy_spatial_delta_v1")
@@ -213,9 +213,9 @@ def build_notes(csi_df: pd.DataFrame, cell_df: pd.DataFrame, coast_summary_df: p
     for _, row in csi_df.iterrows():
         lines.append(
             f"- {row['comparison']} / {fmt(row['threshold_mm'], 1)} mm: "
-            f"hour-block ΔCSI = {fmt(row['delta_csi_left_minus_right_hour'])} "
+            f"hour-block Î”CSI = {fmt(row['delta_csi_left_minus_right_hour'])} "
             f"[{fmt(row['ci_low_hour'])}, {fmt(row['ci_high_hour'])}], "
-            f"day-block ΔCSI = {fmt(row['delta_csi_left_minus_right_day'])} "
+            f"day-block Î”CSI = {fmt(row['delta_csi_left_minus_right_day'])} "
             f"[{fmt(row['ci_low_day'])}, {fmt(row['ci_high_day'])}]."
         )
     lines.extend(["", "## Spatial cell summary"])
@@ -228,9 +228,9 @@ def build_notes(csi_df: pd.DataFrame, cell_df: pd.DataFrame, coast_summary_df: p
     )
     for _, row in coast_summary_df.iterrows():
         lines.append(
-            f"- {row['coast_bin']}: median EURADCLIM ΔMAE = {fmt(row['median_eurad_delta_mae_mean'])}, "
+            f"- {row['coast_bin']}: median EURADCLIM Î”MAE = {fmt(row['median_eurad_delta_mae_mean'])}, "
             f"EURADCLIM better-cell share = {fmt(100.0 * row['eurad_better_cell_share'], 1)}%; "
-            f"median policy ΔMAE = {fmt(row['median_policy_delta_mae_mean'])}, "
+            f"median policy Î”MAE = {fmt(row['median_policy_delta_mae_mean'])}, "
             f"policy better-cell share = {fmt(100.0 * row['policy_better_cell_share'], 1)}%."
         )
     return "\n".join(lines) + "\n"
@@ -280,3 +280,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

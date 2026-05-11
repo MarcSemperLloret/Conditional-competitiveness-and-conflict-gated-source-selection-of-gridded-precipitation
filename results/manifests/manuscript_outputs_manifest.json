@@ -1,0 +1,24 @@
+{
+  "description": "Manuscript-level frozen outputs regenerated from repository artefacts.",
+  "outputs": [
+    "results/bootstrap/bootstrap_delta_mae_summary.csv",
+    "results/bootstrap/day_block_sensitivity.csv",
+    "results/figures_source/figure_2_global_positive.csv",
+    "results/figures_source/figure_2_global_positive_source.csv",
+    "results/figures_source/figure_3_conflict.csv",
+    "results/figures_source/figure_3_conflict_source.csv",
+    "results/figures_source/figure_s1_best_eo_by_regime.csv",
+    "results/manifests/frozen_inputs_manifest.csv",
+    "results/tables/best_eo_vs_best_local_by_regime.csv",
+    "results/tables/conflict_delta_mae_table.csv",
+    "results/tables/main_delta_mae_table.csv",
+    "results/tables/routing_summary.csv",
+    "results/tables/source_routing_summary.csv",
+    "results/tables/table_3_main_delta_mae.csv",
+    "results/tables/table_4_conflict_delta_mae.csv"
+  ],
+  "restricted_inputs_not_public": [
+    "canonical cell-hour benchmark table",
+    "AVAMET-derived local-baseline reconstruction layers"
+  ]
+}

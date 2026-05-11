@@ -1,7 +1,8 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import duckdb
@@ -9,12 +10,13 @@ import numpy as np
 import pandas as pd
 
 
-ROOT = Path(__file__).resolve().parents[2]
-CANONICAL_PARQUET = ROOT / "paper_10_fusion_fail" / "data" / "processed_v3" / "canonical_cell_hour_imerg_v1.parquet"
-STATIC_PARQUET = ROOT / "paper_10_fusion_fail" / "data" / "processed_v3" / "imerg_cell_static_v1.parquet"
-STATION_CSV = ROOT / "paper_10_fusion_fail" / "data" / "avamet" / "intermediate" / "avamet_station_inventory_cv_imerg.csv"
-AVAMET_HOURLY = ROOT / "paper_10_fusion_fail" / "data" / "avamet" / "processed" / "avamet_cv_hourly_2019_2023.parquet"
-OUTPUT_DIR = ROOT / "paper_11_density_thresholds" / "results"
+ROOT = Path(__file__).resolve().parents[1]
+RESTRICTED_DATA_DIR = Path(os.environ.get("BENCHMARK_RESTRICTED_DATA_DIR", ROOT / "data" / "restricted"))
+CANONICAL_PARQUET = RESTRICTED_DATA_DIR / "canonical_cell_hour_imerg_v1.parquet"
+STATIC_PARQUET = RESTRICTED_DATA_DIR / "imerg_cell_static_v1.parquet"
+STATION_CSV = RESTRICTED_DATA_DIR / "avamet_station_inventory_cv_imerg.csv"
+AVAMET_HOURLY = RESTRICTED_DATA_DIR / "avamet_cv_hourly_2019_2023.parquet"
+OUTPUT_DIR = ROOT / "results"
 
 TIME_START = pd.Timestamp("2023-01-01 00:00:00")
 TIME_END = pd.Timestamp("2024-01-01 00:00:00")
@@ -545,3 +547,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

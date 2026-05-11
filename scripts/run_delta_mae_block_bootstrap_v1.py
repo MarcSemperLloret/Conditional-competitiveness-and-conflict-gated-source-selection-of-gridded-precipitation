@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import argparse
@@ -16,8 +16,8 @@ from build_delta_mae_by_support_score_and_regime_v1 import (
 )
 
 
-ROOT = Path(__file__).resolve().parents[2]
-OUTPUT_DIR = ROOT / "paper_11_density_thresholds" / "results" / "bootstrap_delta_mae_v1"
+ROOT = Path(__file__).resolve().parents[1]
+OUTPUT_DIR = ROOT / "results" / "bootstrap_delta_mae_v1"
 DEFAULT_N_BOOTSTRAP = 1500
 DEFAULT_SEED = 42
 
@@ -196,7 +196,7 @@ def build_report(summary_df: pd.DataFrame, n_bootstrap: int, block_unit: str) ->
         "- Negative `delta_mae_eo_minus_local` means the EO product beats the local comparator on MAE.",
         f"- Resamples: {n_bootstrap}",
         "",
-        "| Slice | EO | Comparator | Local baseline | n_eval | n_blocks | Δ(EO-local) | 95% CI | CI excludes 0 | P(EO better) |",
+        "| Slice | EO | Comparator | Local baseline | n_eval | n_blocks | Î”(EO-local) | 95% CI | CI excludes 0 | P(EO better) |",
         "|------|----|------------|----------------|--------|----------|-------------|--------|---------------|--------------|",
     ]
     for _, row in summary_df.iterrows():
@@ -298,3 +298,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

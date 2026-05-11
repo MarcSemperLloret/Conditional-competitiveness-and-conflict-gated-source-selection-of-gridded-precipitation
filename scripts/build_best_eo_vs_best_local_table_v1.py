@@ -1,14 +1,16 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import pandas as pd
 
 
-SOURCE_CSV = Path(r"d:\1_AVAMET_2.0_REVISIO\paper_10_fusion_fail\results\baselines_v3\baseline_results_v3.csv")
-OUTPUT_DIR = Path(r"d:\1_AVAMET_2.0_REVISIO\paper_11_density_thresholds\results")
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE_CSV = Path(os.environ.get("BASELINE_RESULTS_CSV", ROOT / "data" / "restricted" / "baseline_results_v3.csv"))
+OUTPUT_DIR = ROOT / "results"
 
 EO_BASELINES = ["source_imerg", "source_era5", "source_euradclim"]
 LOCAL_BASELINES = [
@@ -189,3 +191,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

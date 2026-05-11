@@ -1,0 +1,6 @@
+artifact,public_path,availability,role
+canonical_cell_hour_benchmark_table,,available from corresponding author subject to source-data conditions,"canonical cell-hour table with gridded predictors, AVAMET target aggregate, support metadata, and disagreement fields"
+main_delta_mae_table,results/tables/main_delta_mae_table.csv,public frozen result table,main global and positive-rain delta MAE contrasts
+conflict_delta_mae_table,results/tables/conflict_delta_mae_table.csv,public frozen result table,conflict-conditioned delta MAE contrasts
+bootstrap_delta_mae_summary,results/bootstrap/bootstrap_delta_mae_summary.csv,public bootstrap summary,hour-block bootstrap intervals for EO-local contrasts
+figure_source_tables,results/figures_source/,public figure-source tables,CSV sources used to regenerate manuscript figures

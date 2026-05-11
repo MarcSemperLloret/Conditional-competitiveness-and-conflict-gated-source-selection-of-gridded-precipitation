@@ -1,7 +1,8 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import duckdb
@@ -25,9 +26,9 @@ from build_delta_mae_by_support_score_and_regime_v1 import (
 from run_delta_mae_block_bootstrap_v1 import bootstrap_mae_difference, factorize_blocks
 
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT_DIR = ROOT / "paper_11_density_thresholds" / "results" / "reviewer_closure_v2"
-BASELINE_RESULTS = ROOT / "paper_10_fusion_fail" / "results" / "baselines_v3" / "baseline_results_v3.csv"
+ROOT = Path(__file__).resolve().parents[1]
+OUT_DIR = ROOT / "results" / "reviewer_closure_v2"
+BASELINE_RESULTS = Path(os.environ.get("BASELINE_RESULTS_CSV", ROOT / "data" / "restricted" / "baseline_results_v3.csv"))
 DEFAULT_N_BOOTSTRAP = 1500
 DEFAULT_SEED = 42
 FIG_DPI = 400
@@ -360,8 +361,8 @@ def build_markdown(
             mean = sub_eo[sub_eo["target_label"] == "Within-cell mean"].iloc[0]
             lines.append(
                 f"- `{slice_label}` / `{eo_label}`: "
-                f"median-target ΔMAE = {fmt(med['delta_mae_eo_minus_local'])}, "
-                f"mean-target ΔMAE = {fmt(mean['delta_mae_eo_minus_local'])}."
+                f"median-target Î”MAE = {fmt(med['delta_mae_eo_minus_local'])}, "
+                f"mean-target Î”MAE = {fmt(mean['delta_mae_eo_minus_local'])}."
             )
 
     lines.extend(
@@ -440,3 +441,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
@@ -7,10 +7,10 @@ from pathlib import Path
 import pandas as pd
 
 
-ROOT = Path(__file__).resolve().parents[2]
-BOOTSTRAP_CSV = ROOT / "paper_11_density_thresholds" / "results" / "bootstrap_delta_mae_v1" / "bootstrap_summary.csv"
-BEST_REGIME_CSV = ROOT / "paper_11_density_thresholds" / "results" / "best_eo_vs_best_local_by_regime_v1.csv"
-OUTPUT_DIR = ROOT / "paper_11_density_thresholds" / "results" / "main_figure_v1"
+ROOT = Path(__file__).resolve().parents[1]
+BOOTSTRAP_CSV = ROOT / "results" / "bootstrap_delta_mae_v1" / "bootstrap_summary.csv"
+BEST_REGIME_CSV = ROOT / "results" / "best_eo_vs_best_local_by_regime_v1.csv"
+OUTPUT_DIR = ROOT / "results" / "main_figure_v1"
 
 EO_LABELS = {
     "source_imerg": "IMERG",
@@ -127,3 +127,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

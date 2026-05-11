@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
@@ -9,8 +9,8 @@ import pandas as pd
 from build_delta_mae_by_support_score_and_regime_v1 import build_prediction_frame
 
 
-ROOT = Path(__file__).resolve().parents[2]
-OUTPUT_DIR = ROOT / "paper_11_density_thresholds" / "results"
+ROOT = Path(__file__).resolve().parents[1]
+OUTPUT_DIR = ROOT / "results"
 
 
 def build_slice_table(df: pd.DataFrame) -> pd.DataFrame:
@@ -92,3 +92,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

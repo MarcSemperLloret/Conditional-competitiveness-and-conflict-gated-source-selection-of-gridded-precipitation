@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
@@ -17,8 +17,8 @@ import build_delta_mae_by_support_score_and_regime_v1 as base
 from build_temporal_sensitivity_2022_v1 import build_year_frame
 
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT_DIR = ROOT / "paper_11_density_thresholds" / "results" / "intense_event_case_v1"
+ROOT = Path(__file__).resolve().parents[1]
+OUT_DIR = ROOT / "results" / "intense_event_case_v1"
 STATIC_PARQUET = base.STATIC_PARQUET
 
 EVENT_GRID_ID = "imerg_1802_1304"
@@ -327,3 +327,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

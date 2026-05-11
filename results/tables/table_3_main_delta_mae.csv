@@ -1,0 +1,7 @@
+slice_id,slice_family,slice_label,eo_baseline,comparator_kind,local_baseline,n_eval,n_blocks,mae_eo,mae_local,delta_mae_eo_minus_local,ci_low,ci_high,prob_eo_better,ci_excludes_zero,p_two_sided_boot
+overall_all,overall,all,source_era5,fixed_local,domain_idw_leavecell_knn64,882999,8695,0.0633592185592007,0.0399582323442801,0.0234009862149206,0.0198789752183363,0.0271476276007868,0.0,True,0.0
+overall_all,overall,all,source_euradclim,fixed_local,domain_idw_leavecell_knn64,882999,8695,0.0605583448286689,0.0399582323442801,0.0206001124843888,0.0168613765395311,0.0247191418435242,0.0,True,0.0
+overall_all,overall,all,source_imerg,fixed_local,domain_idw_leavecell_knn64,882999,8695,0.0953889428320855,0.0399582323442801,0.0554307104878053,0.0492600610277182,0.0618256871767128,0.0,True,0.0
+overall_positive_target,overall,positive_target_only,source_era5,fixed_local,domain_idw_leavecell_knn64,20652,2346,1.546404162551796,1.0260633367938254,0.5203408257579705,0.4528127486629582,0.5885244619085777,0.0,True,0.0
+overall_positive_target,overall,positive_target_only,source_euradclim,fixed_local,domain_idw_leavecell_knn64,20652,2346,1.715602959200119,1.0260633367938254,0.6895396224062935,0.5918762335889907,0.8091070893803536,0.0,True,0.0
+overall_positive_target,overall,positive_target_only,source_imerg,fixed_local,domain_idw_leavecell_knn64,20652,2346,1.9464401583334383,1.0260633367938254,0.9203768215396132,0.8221145878599314,1.0187317955357422,0.0,True,0.0

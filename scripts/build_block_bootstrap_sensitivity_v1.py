@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import argparse
@@ -16,8 +16,8 @@ from build_delta_mae_by_support_score_and_regime_v1 import (
 from run_delta_mae_block_bootstrap_v1 import bootstrap_mae_difference, factorize_blocks
 
 
-ROOT = Path(__file__).resolve().parents[2]
-OUTPUT_DIR = ROOT / "paper_11_density_thresholds" / "results" / "bootstrap_block_sensitivity_v1"
+ROOT = Path(__file__).resolve().parents[1]
+OUTPUT_DIR = ROOT / "results" / "bootstrap_block_sensitivity_v1"
 DEFAULT_N_BOOTSTRAP = 1500
 DEFAULT_SEED = 42
 
@@ -199,3 +199,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

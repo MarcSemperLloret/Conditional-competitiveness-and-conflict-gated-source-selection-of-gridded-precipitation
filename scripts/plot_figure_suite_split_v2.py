@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
@@ -14,9 +14,9 @@ import numpy as np
 import pandas as pd
 
 
-ROOT = Path(__file__).resolve().parents[2]
-DATA_DIR = ROOT / "paper_11_density_thresholds" / "results" / "main_figure_v1"
-OUT_DIR = ROOT / "paper_11_density_thresholds" / "results" / "main_figure_v2_split"
+ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT / "results" / "main_figure_v1"
+OUT_DIR = ROOT / "results" / "main_figure_v2_split"
 
 PANEL_A_CSV = DATA_DIR / "panel_a_global_and_positive_rain.csv"
 PANEL_B_CSV = DATA_DIR / "panel_b_conflict_bootstrap.csv"
@@ -270,3 +270,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
@@ -10,8 +10,8 @@ import build_delta_mae_by_support_score_and_regime_v1 as base
 from run_delta_mae_block_bootstrap_v1 import bootstrap_mae_difference, factorize_blocks
 
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT_DIR = ROOT / "paper_11_density_thresholds" / "results" / "temporal_sensitivity_v1"
+ROOT = Path(__file__).resolve().parents[1]
+OUT_DIR = ROOT / "results" / "temporal_sensitivity_v1"
 DEFAULT_N_BOOTSTRAP = 1500
 DEFAULT_SEED = 42
 
@@ -101,7 +101,7 @@ def build_markdown(summary_df: pd.DataFrame) -> str:
         for _, row in subset.iterrows():
             lines.append(
                 f"  - {int(row['year'])} / {row['eo_label']}: "
-                f"ΔMAE = {fmt(row['delta_mae_eo_minus_local'])} "
+                f"Î”MAE = {fmt(row['delta_mae_eo_minus_local'])} "
                 f"[{fmt(row['ci_low'])}, {fmt(row['ci_high'])}], "
                 f"n_rows = {int(row['n_rows'])}, wet_share = {fmt(row['wet_share'], 6)}"
             )
@@ -139,3 +139,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

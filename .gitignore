@@ -7,13 +7,11 @@ __pycache__/
 venv/
 ENV/
 
-# Data and results (keep directory but ignore contents if large or sensitive)
-data/*
-!data/.gitkeep
-results/*
-!results/.gitkeep
+# Restricted or bulky data
 *.parquet
-*.csv
+data/restricted/
+
+# Public frozen manuscript-level artefacts are intentionally tracked.
 
 # OS
 .DS_Store

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 from pathlib import Path
@@ -12,8 +12,8 @@ import numpy as np
 import pandas as pd
 
 
-ROOT = Path(__file__).resolve().parents[2]
-DATA_DIR = ROOT / "paper_11_density_thresholds" / "results" / "main_figure_v1"
+ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT / "results" / "main_figure_v1"
 OUT_DIR = DATA_DIR
 
 PANEL_A_CSV = DATA_DIR / "panel_a_global_and_positive_rain.csv"
@@ -268,3 +268,4 @@ def build_figure() -> None:
 
 if __name__ == "__main__":
     build_figure()
+

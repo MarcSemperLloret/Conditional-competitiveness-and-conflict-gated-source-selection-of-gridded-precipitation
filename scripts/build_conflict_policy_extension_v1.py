@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 from __future__ import annotations
 
 import json
@@ -16,8 +16,8 @@ from build_temporal_sensitivity_2022_v1 import build_year_frame
 from run_delta_mae_block_bootstrap_v1 import bootstrap_mae_difference, factorize_blocks
 
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT_DIR = ROOT / "paper_11_density_thresholds" / "results" / "conflict_policy_extension_v1"
+ROOT = Path(__file__).resolve().parents[1]
+OUT_DIR = ROOT / "results" / "conflict_policy_extension_v1"
 SEED = 42
 N_BOOTSTRAP = 1500
 ALERT_THRESHOLDS_MM = [0.1, 1.0, 5.0, 10.0]
@@ -597,3 +597,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
