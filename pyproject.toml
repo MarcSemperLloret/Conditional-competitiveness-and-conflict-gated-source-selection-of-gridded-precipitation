@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "precipbench"
+version = "1.0.0"
+description = "Auditable geospatial benchmarking workflow for gridded precipitation products under dense-gauge co-availability"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Marc Semper", email = "marc.semper@ua.es" },
+    { name = "Manuel Curado", email = "manuel.curado@ua.es" },
+    { name = "Jose F. Vicent", email = "jvicent@ua.es" },
+    { name = "Marco Podda", email = "marco.podda@unipi.it" },
+]
+keywords = [
+    "geospatial benchmarking",
+    "gridded precipitation",
+    "inverse distance weighting",
+    "leave-cell interpolation",
+    "source disagreement",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Scientific/Engineering :: Hydrology",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+]
+
+[project.optional-dependencies]
+io = [
+    "duckdb>=1.0",
+    "pyarrow>=14.0",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+]
+
+[project.urls]
+Repository = "https://github.com/MarcSemperLloret/Conditional-competitiveness-and-conflict-gated-source-selection-of-gridded-precipitation"
+
+[tool.setuptools.packages.find]
+include = ["precipbench*"]
