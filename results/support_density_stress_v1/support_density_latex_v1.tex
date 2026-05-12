@@ -1,24 +1,22 @@
 \begin{table}[t]
 \centering
 \begin{threeparttable}
-\caption{Gauge-support stress test: gridded-minus-local $\Delta$MAE across three support tiers. Rain-active $\Delta$MAE increases monotonically with gauge support for all three gridded products, confirming that a denser local network hardens the benchmark rather than narrowing the gap.}
+\caption{Gauge-support stress test: rain-active gridded-minus-local $\Delta$MAE for all three products across three support tiers. Each product shows strictly increasing $\Delta$MAE from low to high support, confirming that a denser local network hardens the benchmark rather than narrowing the gap.}
 \label{tab:support-stress}
 \footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lrrcccc}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrccc}
 \toprule
-Support tier & $n_\text{all}$ & $n_\text{rain}$ & \multicolumn{2}{c}{Best gridded (all hours)} & \multicolumn{2}{c}{Best gridded (rain-active)} \\
-\cmidrule(lr){4-5}\cmidrule(lr){6-7}
-& & & Product & $\Delta$MAE & Product & $\Delta$MAE \\
+Support tier & $n_\text{all}$ & $n_\text{rain}$ & ERA5 & EURADCLIM & IMERG \\
 \midrule
-\textbf{Low} (${\geq}1$ gauge, score ${\leq}0.34$) & 545,448 & 11,858 & EURADCLIM & $+0.016$ & EURADCLIM & $+0.359$ \\
-\textbf{Medium} (${\geq}2$ gauges, all scores) & 882,999 & 20,652 & EURADCLIM & $+0.021$ & ERA5 & $+0.520$ \\
-\textbf{High} (${\geq}2$ gauges, score ${>}0.67$) & 561,301 & 11,197 & EURADCLIM & $+0.020$ & ERA5 & $+0.607$ \\
+\textbf{Low} (${\geq}1$ gauge, score ${\leq}0.34$) & 545,448 & 11,858 & $+0.394$ & $+0.359$ & $+0.725$ \\
+\textbf{Medium} (${\geq}2$ gauges, all scores) & 882,999 & 20,652 & $+0.520$ & $+0.690$ & $+0.920$ \\
+\textbf{High} (${\geq}2$ gauges, score ${>}0.67$) & 561,301 & 11,197 & $+0.607$ & $+0.854$ & $+1.041$ \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
 \footnotesize
-\item $\Delta$MAE = gridded $-$ leave-cell local (fixed 64-neighbour IDW), mm. Low tier uses the broad ${\geq}1$ gauge universe with single-station-like support score (${\leq}0.34$); Medium tier is the main robust-support universe (${\geq}2$ gauges, all scores); High tier restricts further to three-plus-like support scores ($> 0.67$). All-hours $\Delta$MAE shows no consistent trend across tiers, consistent with dry-hour composition dominating the aggregate; rain-active $\Delta$MAE is strictly increasing for all three gridded products.
+\item Rain-active $\Delta$MAE = gridded $-$ leave-cell local (fixed 64-neighbour IDW), mm (positive-target hours only). Low tier: broad ${\geq}1$ gauge universe, single-station-like support score (${\leq}0.34$); Medium tier: main robust-support universe (${\geq}2$ gauges, all scores); High tier: three-plus-like support scores ($>{0.67}$). All-hours $\Delta$MAE shows no consistent trend across tiers (dry-hour composition effect); rain-active $\Delta$MAE is strictly increasing for all three products.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

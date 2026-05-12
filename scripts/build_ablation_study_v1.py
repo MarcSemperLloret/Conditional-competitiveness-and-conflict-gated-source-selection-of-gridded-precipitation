@@ -190,10 +190,12 @@ print(f"Saved: {csv_path}")
 # ------------------------------------------------------------------
 LATEX_ROWS = [
     # (version, design text, best_all_label, metric_all, best_rain_label, metric_rain)
+    # Version A: all-hours only — rain-active is not evaluated
     ("A",
      r"Raw MAE vs.\ target, all hours, no local comparator",
      r"EURADCLIM", f"${vA_mae_all:.3f}$",
-     r"ERA5",      f"${vA_mae_rain:.2f}$"),
+     r"n.e.",      r"---"),
+    # Version B: introduces positive-rain conditioning, reveals the ranking flip
     ("B",
      r"$+$ positive-rain conditioning",
      r"EURADCLIM", f"${vA_mae_all:.3f}$",
@@ -225,8 +227,8 @@ LATEX_ROWS = [
 ]
 
 CONCLUSIONS = [
-    r"Single-number ranking; EURADCLIM preferred globally",
-    r"Ranking shifts in rain-active hours (ERA5 $\neq$ EURADCLIM)",
+    r"All-hours ranking only; EURADCLIM preferred globally",
+    r"Ranking flips: ERA5 (1.55~mm) beats EURADCLIM (1.72~mm) in rain-active hours; aggregate masks regime structure",
     r"No stable winner; apparent best changes with conflict regime",
     r"All gridded products inferior to local; local MAE is the new floor",
     r"Support filter hardens benchmark; direction preserved, margins wider",

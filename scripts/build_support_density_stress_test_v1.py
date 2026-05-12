@@ -59,55 +59,53 @@ df_out.to_csv(csv_path, index=False)
 print(f"Saved: {csv_path}")
 
 # ------------------------------------------------------------------
-# LaTeX summary table  (best product per tier, both metrics)
+# LaTeX summary table  (all three products per tier, rain-active only)
 # ------------------------------------------------------------------
-def best_row(df_tier, col):
-    idx = df_tier[col].idxmin()
-    r = df_tier.loc[idx]
-    return r["product"], r[col]
+PRODUCTS = ["ERA5", "EURADCLIM", "IMERG"]
 
 lines = []
 lines.append(r"\begin{table}[t]")
 lines.append(r"\centering")
 lines.append(r"\begin{threeparttable}")
-lines.append(r"\caption{Gauge-support stress test: gridded-minus-local $\Delta$MAE across three support tiers. "
-             r"Rain-active $\Delta$MAE increases monotonically with gauge support for all three gridded products, "
+lines.append(r"\caption{Gauge-support stress test: rain-active gridded-minus-local $\Delta$MAE "
+             r"for all three products across three support tiers. "
+             r"Each product shows strictly increasing $\Delta$MAE from low to high support, "
              r"confirming that a denser local network hardens the benchmark rather than narrowing the gap.}")
 lines.append(r"\label{tab:support-stress}")
 lines.append(r"\footnotesize")
-lines.append(r"\setlength{\tabcolsep}{4pt}")
-lines.append(r"\begin{tabular}{lrrcccc}")
+lines.append(r"\setlength{\tabcolsep}{5pt}")
+lines.append(r"\begin{tabular}{lrrccc}")
 lines.append(r"\toprule")
-lines.append(r"Support tier & $n_\text{all}$ & $n_\text{rain}$ & "
-             r"\multicolumn{2}{c}{Best gridded (all hours)} & "
-             r"\multicolumn{2}{c}{Best gridded (rain-active)} \\")
-lines.append(r"\cmidrule(lr){4-5}\cmidrule(lr){6-7}")
-lines.append(r"& & & Product & $\Delta$MAE & Product & $\Delta$MAE \\")
+lines.append(r"Support tier & $n_\text{all}$ & $n_\text{rain}$ & ERA5 & EURADCLIM & IMERG \\")
 lines.append(r"\midrule")
 
 for scenario, sbin, tier_label, tex_label in TIERS:
     sub = df_out[(df_out.tier == tier_label)]
-    best_all_prod,  best_all_delta  = best_row(sub, "delta_all_mm")
-    best_rain_prod, best_rain_delta = best_row(sub, "delta_rain_mm")
     n_all  = sub["n_all"].iloc[0]
     n_rain = sub["n_rain"].iloc[0]
+    deltas = {}
+    for prod in PRODUCTS:
+        row = sub[sub["product"] == prod].iloc[0]
+        deltas[prod] = row["delta_rain_mm"]
     lines.append(
         fr"\textbf{{{tier_label}}} ({tex_label}) & "
         fr"{n_all:,} & {n_rain:,} & "
-        fr"{best_all_prod} & ${best_all_delta:+.3f}$ & "
-        fr"{best_rain_prod} & ${best_rain_delta:+.3f}$ \\"
+        fr"${deltas['ERA5']:+.3f}$ & "
+        fr"${deltas['EURADCLIM']:+.3f}$ & "
+        fr"${deltas['IMERG']:+.3f}$ \\"
     )
 
 lines.append(r"\bottomrule")
 lines.append(r"\end{tabular}")
 lines.append(r"\begin{tablenotes}")
 lines.append(r"\footnotesize")
-lines.append(r"\item $\Delta$MAE = gridded $-$ leave-cell local (fixed 64-neighbour IDW), mm. "
-             r"Low tier uses the broad ${\geq}1$ gauge universe with single-station-like support score (${\leq}0.34$); "
-             r"Medium tier is the main robust-support universe (${\geq}2$ gauges, all scores); "
-             r"High tier restricts further to three-plus-like support scores ($> 0.67$). "
-             r"All-hours $\Delta$MAE shows no consistent trend across tiers, consistent with dry-hour composition dominating "
-             r"the aggregate; rain-active $\Delta$MAE is strictly increasing for all three gridded products.")
+lines.append(r"\item Rain-active $\Delta$MAE = gridded $-$ leave-cell local (fixed 64-neighbour IDW), "
+             r"mm (positive-target hours only). "
+             r"Low tier: broad ${\geq}1$ gauge universe, single-station-like support score (${\leq}0.34$); "
+             r"Medium tier: main robust-support universe (${\geq}2$ gauges, all scores); "
+             r"High tier: three-plus-like support scores ($>{0.67}$). "
+             r"All-hours $\Delta$MAE shows no consistent trend across tiers (dry-hour composition effect); "
+             r"rain-active $\Delta$MAE is strictly increasing for all three products.")
 lines.append(r"\end{tablenotes}")
 lines.append(r"\end{threeparttable}")
 lines.append(r"\end{table}")
