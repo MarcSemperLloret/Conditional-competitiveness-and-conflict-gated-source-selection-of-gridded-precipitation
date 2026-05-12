@@ -1,0 +1,7 @@
+version,design_added,n_eval_all,n_eval_rain,best_all,metric_all,best_rain,metric_rain,conclusion
+A,"Raw MAE vs. gauge target, all hours, no local comparator, no filters",882999,20652,EURADCLIM,MAE=0.0606,ERA5,MAE=1.546,Single global ranking; EURADCLIM appears best overall
+B,+ positive-rain conditioning,882999,20652,EURADCLIM,MAE=0.0606,ERA5,MAE=1.546,Ranking shifts in rain-active hours (ERA5 overtakes EURADCLIM); aggregate masks regime structure
+C,+ conflict stratification (no local comparator yet),882999,20652,IMERG/IMERG/ERA5 (low/mid/high),Low:0.0018 Mid:0.045 High:0.968,Regime-dependent,varies,No single winner; apparent best product changes with conflict regime
+D,"+ leave-cell local comparator (delta_MAE = gridded - local), support >=1 gauge",1428447,32510,EURADCLIM (smallest positive delta),delta=+0.0187,ERA5 (smallest positive delta),delta=+0.474,All gridded products worse than leave-cell local; question shifts from ranking to when local evidence dominates
+E,+ support >=2 gauge filter (robust-support universe),882999,20652,EURADCLIM (smallest delta),delta=+0.0206,ERA5 (smallest delta),delta=+0.520,"Support filter reduces universe (1,428,447 -> 882,999 cell-hours) and widens gridded-minus-local gap; benchmark harder but direction preserved"
+F,+ conflict-gated routing policy (full workflow),882999,20652,Conflict-gated hybrid,MAE=0.0328 (local-only=0.0400),Local-always,MAE=1.026 (policy=1.050),Routing reduces all-hours MAE by 18% vs. always-local (18% local branch usage); positive-rain still favors always-local

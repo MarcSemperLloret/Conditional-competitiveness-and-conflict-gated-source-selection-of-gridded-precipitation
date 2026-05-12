@@ -1,0 +1,19 @@
+{
+  "script": "build_ablation_study_v1.py",
+  "inputs": [
+    "results/figures_source/figure_2_global_positive.csv",
+    "results/figures_source/figure_3_conflict.csv",
+    "results/conflict_policy_extension_v1/conflict_policy_performance_v1.csv"
+  ],
+  "outputs": {
+    "csv": "results/ablation_study_v1/ablation_table_v1.csv",
+    "latex": "results/ablation_study_v1/ablation_latex_v1.tex"
+  },
+  "key_findings": {
+    "A_vs_B": "EURADCLIM best globally but ERA5 better in rain-active hours \u2014 aggregate masks regime structure",
+    "B_vs_C": "No single winner when conflict is introduced \u2014 apparent best product is regime-dependent",
+    "C_vs_D": "Introducing leave-cell local baseline: ALL gridded products are worse than local; paradigm shift",
+    "D_vs_E": "Support >=2 filter reduces universe from 1,428,447 to 882,999 cell-hours; all-hours gap widens (+0.0187 -> +0.0206), rain-active gap widens (+0.474 -> +0.520)",
+    "E_vs_F": "Conflict-gated routing reduces all-hours MAE by 18% vs always-local; rain-active still needs local branch"
+  }
+}

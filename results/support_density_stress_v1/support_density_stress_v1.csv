@@ -1,0 +1,10 @@
+tier,tex_label,scenario,support_bin,product,n_all,n_rain,delta_all_mm,delta_rain_mm
+Low,"${\geq}1$ gauge, score ${\leq}0.34$",wide_ge_1,single_station_like_le_0.34,ERA5,545448,11858,0.0236967552623199,0.39406113268204
+Low,"${\geq}1$ gauge, score ${\leq}0.34$",wide_ge_1,single_station_like_le_0.34,EURADCLIM,545448,11858,0.0157085606460023,0.3594490966376835
+Low,"${\geq}1$ gauge, score ${\leq}0.34$",wide_ge_1,single_station_like_le_0.34,IMERG,545448,11858,0.0539696544381239,0.7248040526117447
+Medium,"${\geq}2$ gauges, all scores",robust_ge_2,all,ERA5,882999,20652,0.0234009862149205,0.5203408257579705
+Medium,"${\geq}2$ gauges, all scores",robust_ge_2,all,EURADCLIM,882999,20652,0.0206001124843888,0.6895396224062935
+Medium,"${\geq}2$ gauges, all scores",robust_ge_2,all,IMERG,882999,20652,0.0554307104878053,0.9203768215396132
+High,"${\geq}2$ gauges, score ${>}0.67$",robust_ge_2,three_plus_like_gt_0.67,ERA5,561301,11197,0.0220630014434946,0.6067341011393239
+High,"${\geq}2$ gauges, score ${>}0.67$",robust_ge_2,three_plus_like_gt_0.67,EURADCLIM,561301,11197,0.0200338019358011,0.8535914838454872
+High,"${\geq}2$ gauges, score ${>}0.67$",robust_ge_2,three_plus_like_gt_0.67,IMERG,561301,11197,0.0539489195927389,1.0413670362009433

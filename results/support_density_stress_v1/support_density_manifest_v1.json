@@ -1,0 +1,11 @@
+{
+  "script": "build_support_density_stress_test_v1.py",
+  "inputs": [
+    "results/delta_mae_by_support_score_and_regime_v1.csv"
+  ],
+  "outputs": {
+    "csv": "results/support_density_stress_v1/support_density_stress_v1.csv",
+    "latex": "results/support_density_stress_v1/support_density_latex_v1.tex"
+  },
+  "key_finding": "Rain-active delta_MAE is strictly increasing with support score for all three gridded products, confirming that denser local networks harden the benchmark rather than narrowing the gridded-vs-local gap."
+}

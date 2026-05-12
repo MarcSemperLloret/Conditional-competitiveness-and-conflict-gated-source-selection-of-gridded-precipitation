@@ -1,0 +1,32 @@
+\begin{table}[t]
+\centering
+\begin{threeparttable}
+\caption{Ablation study: effect of each workflow design decision on product rankings. Each version adds one element to the previous design. Best-ranked product (all-hours and rain-active) and the resulting operational conclusion are shown for each design.}
+\label{tab:ablation}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{clp{3.1cm}cp{2.8cm}cp{4.4cm}}
+\toprule
+Ver. & Design element added & Best (all hours) & Metric & Best (rain-active) & Metric & Operational conclusion \\
+\midrule
+\textbf{A} & Raw MAE vs.\ target, all hours, no local comparator & EURADCLIM & $0.061$ & ERA5 & $1.55$ & Single-number ranking; EURADCLIM preferred globally \\
+\addlinespace[2pt]
+\textbf{B} & $+$ positive-rain conditioning & EURADCLIM & $0.061$ & ERA5 & $1.55$ & Ranking shifts in rain-active hours (ERA5 $\neq$ EURADCLIM) \\
+\addlinespace[2pt]
+\textbf{C} & $+$ conflict stratification (no local) & IMERG / IMERG / ERA5\textsuperscript{\dag} & varies & Regime-dependent & varies & No stable winner; apparent best changes with conflict regime \\
+\addlinespace[2pt]
+\textbf{D} & $+$ leave-cell local comparator ($\Delta$MAE), support ${\geq}1$ & All worse; EURADCLIM closest & $\Delta=+0.019$ & All worse; ERA5 closest & $\Delta=+0.47$ & All gridded products inferior to local; local MAE is the new floor \\
+\addlinespace[2pt]
+\textbf{E} & $+$ support ${\geq}2$ gauge filter & EURADCLIM (lowest $\Delta$) & $\Delta=+0.021$ & ERA5 (lowest $\Delta$) & $\Delta=+0.52$ & Support filter hardens benchmark; direction preserved, margins wider \\
+\addlinespace[2pt]
+\textbf{F} & $+$ conflict-gated routing (full workflow) & Hybrid routing & $0.0328$ & Local-always & $1.026$ & Routing reduces all-hours MAE by 18\% vs.\ always-local; positive-rain still needs local branch \\
+\addlinespace[2pt]
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item[\dag] Low/mid/high conflict bins respectively.
+\item All versions use the 2023 evaluable common universe ($|\mathcal{U}_{2023}^{(2)}|=882{,}999$ cell-hours; 20{,}652 positive-rain). MAE in mm; $\Delta$MAE = gridded$-$local.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
