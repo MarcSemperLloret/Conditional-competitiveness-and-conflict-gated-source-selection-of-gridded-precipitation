@@ -16,3 +16,13 @@ data/restricted/
 # OS
 .DS_Store
 Thumbs.db
+
+# Manuscript files (not for public repo)
+manuscript/*.tex
+manuscript/*.bib
+manuscript/*.pdf
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.out
+manuscript/*.spl
+manuscript/*.txt
