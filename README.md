@@ -1,8 +1,8 @@
-# An auditable geospatial benchmarking workflow for gridded precipitation products under dense-gauge co-availability
+# A reproducible geospatial benchmarking workflow for gridded precipitation products under dense-gauge co-availability
 
 This repository accompanies the manuscript:
 
-"An auditable geospatial benchmarking workflow for gridded precipitation products under dense-gauge co-availability"
+"A reproducible geospatial benchmarking workflow for gridded precipitation products under dense-gauge co-availability"
 
 The repository provides an installable Python package (`precipbench`), versioned analysis scripts, frozen manuscript-level outputs, and figure-source tables needed to audit and regenerate the manuscript-level analyses.
 
@@ -72,6 +72,22 @@ The public frozen artefacts allow regeneration of manuscript-level tables, boots
 - `results/bootstrap/`
 - `results/figures_source/`
 - `results/manifests/`
+
+## Revision analyses
+
+The robustness analyses added during peer review are in `scripts/revision_cageo_*_v1.py`; their aggregated outputs are in `results/revision_cageo_v1/`. They require the restricted inputs (see below) and are run in this order:
+
+```bash
+cd scripts
+python revision_cageo_cache_v1.py                # per-year prediction frames with leave-cell IDW (cached, not distributed)
+python revision_cageo_analyses_v1.py             # multi-metric scores, block/rain-event bootstrap, relative conflict, thresholds, 2019-2023 stress test
+python revision_cageo_representativeness_v1.py   # within-cell target geometry and split-half noise floor
+python revision_cageo_resampling_v1.py           # alternative ERA5/EURADCLIM remapping operators
+python revision_cageo_kriging_v1.py              # leave-cell ordinary kriging and kriging with elevation drift
+python revision_cageo_tables_v1.py               # LaTeX table bodies used in the manuscript
+```
+
+`revision_cageo_resampling_v1.py` additionally needs the regional monthly ERA5 and EURADCLIM extracts (`BENCHMARK_REGIONAL_NPZ_DIR`).
 
 ## Restricted Inputs
 

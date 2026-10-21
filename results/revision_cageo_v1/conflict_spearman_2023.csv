@@ -1,0 +1,11 @@
+index,pair,rho
+absolute kappa,kappa vs target (wet rows),0.4498758018612339
+absolute kappa,kappa vs product mean (rows with product mean >= 0.5 mm),0.8242010068449862
+absolute kappa,kappa vs error gap IMERG (wet rows),0.3826426279012463
+absolute kappa,kappa vs error gap ERA5 (wet rows),0.2152435342836004
+absolute kappa,kappa vs error gap EURADCLIM (wet rows),0.22017185586281626
+relative kappa,kappa vs target (wet rows),0.0955185918149538
+relative kappa,kappa vs product mean (rows with product mean >= 0.5 mm),-0.1962542007005693
+relative kappa,kappa vs error gap IMERG (wet rows),0.1381982222114396
+relative kappa,kappa vs error gap ERA5 (wet rows),0.06789051703183986
+relative kappa,kappa vs error gap EURADCLIM (wet rows),0.08103874117810839

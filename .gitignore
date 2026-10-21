@@ -10,6 +10,10 @@ ENV/
 # Restricted or bulky data
 *.parquet
 data/restricted/
+results/revision_cageo_v1/cache/
+
+# Internal revision material (letters, backups)
+revision_cageo/
 
 # Public frozen manuscript-level artefacts are intentionally tracked.
 
